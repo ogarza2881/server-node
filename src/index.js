@@ -1,7 +1,6 @@
 import './helpers/dotenv'
 
 import express from 'express'
-import morgan from 'morgan'
 import cors from 'cors'
 import helmet from 'helmet'
 
@@ -16,7 +15,6 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use(morgan(process.env.MORGAN_LOG))
 app.use(cors({ origin: process.env.ORIGIN }))
 app.use(helmet())
 
@@ -26,5 +24,5 @@ app.use(notFound)
 app.use(errorHandler)
 
 app.listen(port, () =>
-  logger.success(`Application started at http://localhost:${process.env.PORT}`),
+  logger.success(`Application started at http://localhost:${port}`),
 )
